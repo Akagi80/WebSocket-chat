@@ -9,7 +9,7 @@ let userName = '';
 
 const socket = io();
 // 28.3 dodajemy nasłuchowacz, wiadolość pojawia się na naszej LOKALNEJ liście
-socket.on('message', ({ author, content }) => addMessage(author, content))
+socket.on('message', ({ author, content }) => addMessage(author, content));
 
 // 28.2 Etap 4: Walidacja logowania
 const login = e => {
@@ -31,7 +31,7 @@ const sendMessage = e => {
   if (messageContentInput.value) {
     addMessage(userName, messageContentInput.value);
     // 28.3  dodajemy emitter aby wysłać ta wiadomość na serwer
-    socket.emit('message', { author: userName, content: messageContent })
+    socket.emit('message', { author: userName, content: messageContentInput.value });
     messageContentInput.value = '';
   } else {
     alert('You have to type message!')
